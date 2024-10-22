@@ -16,19 +16,24 @@ To use the `gitlab-clone-repos.py` script, follow these steps:
 1. Clone this repository to your local machine.
 2. Open a terminal or command prompt.
 3. Navigate to the cloned repository directory.
-4. Update the following variables in the script:
-    - `GITLAB_URL`: Set your GitLab instance URL.
-    - `GITLAB_FQDN`: Set your GitLab fully qualified domain name.
-    - `USER_NAME`: Set your GitLab username.
-    - `PRIVATE_TOKEN`: Set your GitLab private token.
+4. Create a `gitcloner.ini` file with the following content:
+    ```ini
+    [gitlab]
+    url = https://your-gitlab-url
+    user = your-username
+    private_token = your-private-token
+    ```
 5. Run the script using the following command:
-
-     ```bash
-     python gitlab-clone-repos.py
-     ```
-
-     This will clone all the GitLab repositories listed in the script.
+    ```bash
+    python gitlab-clone-repos.py
+    ```
+6. Use the command-line arguments to specify projects or groups to clone, or clone all:
+    ```bash
+    python gitlab-clone-repos.py --projects project1,project2
+    python gitlab-clone-repos.py --groups group1,group2
+    python gitlab-clone-repos.py --all
+    ```
 
 ## License
 
-This project is licensed under the [GNU V3 License](LICENSE).
+This project is licensed under the GNU V3 License.
