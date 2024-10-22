@@ -1,6 +1,6 @@
 # GitCloner
 
-This repository contains the `gitlab-clone-repos.py` file, which is a Python script for cloning GitLab repositories.
+This repository contains the `git_cloner.py` file, which is a Python script for cloning GitLab repositories.
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ Before running the script, make sure you have the following:
 
 ## Usage
 
-To use the `gitlab-clone-repos.py` script, follow these steps:
+To use the `git_cloner.py` script, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Open a terminal or command prompt.
@@ -25,13 +25,13 @@ To use the `gitlab-clone-repos.py` script, follow these steps:
     ```
 5. Run the script using the following command:
     ```bash
-    python gitlab-clone-repos.py
+    python git_cloner.py
     ```
 6. Use the command-line arguments to specify projects or groups to clone, or clone all:
     ```bash
-    python gitlab-clone-repos.py --projects project1,project2
-    python gitlab-clone-repos.py --groups group1,group2
-    python gitlab-clone-repos.py --all
+    python git_cloner.py --projects project1,project2
+    python git_cloner.py --groups group1,group2
+    python git_cloner.py --all
     ```
 
 ## License

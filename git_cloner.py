@@ -6,7 +6,11 @@ Date: 21 October 2024
 
 Description: GitCloner
 
-This script automates the cloning of all GitLab repositories from a specified GitLab instance using the GitLab API. It retrieves all groups and projects, then clones each project into a subdirectory named after the group. If a repository already exists locally, the script performs a `git pull` to update it. Additionally, the script commits and pushes any changes to the remote repository, provided the project is not archived.
+This script automates the cloning of all GitLab repositories from a specified GitLab 
+instance using the GitLab API. It retrieves all groups and projects, then clones each 
+project into a subdirectory named after the group. If a repository already exists locally, 
+the script performs a `git pull` to update it. Additionally, the script commits and pushes 
+any changes to the remote repository, provided the project is not archived.
 """
 
 import os
