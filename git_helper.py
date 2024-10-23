@@ -4,7 +4,7 @@ Copyright Notice:
 Author: Mathew Keeling
 Date: 21 October 2024
 
-Description: GitCloner
+Description: git_helper
 
 This script automates the cloning of all GitLab repositories from a specified GitLab 
 instance using the GitLab API. It retrieves all groups and projects, then clones each 
@@ -22,7 +22,7 @@ import argparse
 import configparser
 
 
-class GitCloner:
+class git_helper:
     """
     A class to clone and update GitLab repositories.
 
@@ -57,7 +57,7 @@ class GitCloner:
 
     def setup_logging(self):
         logging.basicConfig(
-            filename="gitcloner.log",
+            filename="git_helper.log",
             level=logging.DEBUG if self.verbose else logging.INFO,
             format="%(asctime)s - %(levelname)s - %(message)s",
         )
@@ -150,7 +150,7 @@ class GitCloner:
                 if not project_info.get("archived"):
                     current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     os.system(
-                        f'cd {project} && git commit -m "GitCloner: {current_datetime}"'
+                        f'cd {project} && git commit -m "git_helper: {current_datetime}"'
                     )
                     os.system(
                         f"cd {project} && git remote set-url origin {self.gitlab_url}/{project}.git"
@@ -202,20 +202,20 @@ def create_config_file():
         "user": "your-username",
         "private_token": "your-private-token",
     }
-    with open("gitcloner.ini", "w") as configfile:
+    with open("git_helper.ini", "w") as configfile:
         config.write(configfile)
-    print("Configuration file 'gitcloner.ini' created with generic values.")
+    print("Configuration file 'git_helper.ini' created with generic values.")
     print("Please update it with your GitLab URL, username, and private token.")
     print("Exiting...")
 
 
 if __name__ == "__main__":
-    if not os.path.exists("gitcloner.ini"):
+    if not os.path.exists("git_helper.ini"):
         create_config_file()
         exit(1)
 
     config = configparser.ConfigParser()
-    config.read("gitcloner.ini")
+    config.read("git_helper.ini")
 
     GITLAB_URL = config["gitlab"]["url"]
     USER = config["gitlab"]["user"]
@@ -238,7 +238,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    cloner = GitCloner(GITLAB_URL, USER, PRIVATE_TOKEN, verbose=args.verbose)
+    cloner = git_helper(GITLAB_URL, USER, PRIVATE_TOKEN, verbose=args.verbose)
 
     if args.all:
         cloner.clone_all()

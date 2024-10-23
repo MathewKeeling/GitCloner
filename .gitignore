@@ -3,7 +3,7 @@
 ######################
 
 # Secrets
-gitcloner.ini
+git_helper.ini
 
 ##################
 ## Boiler Plate ##
