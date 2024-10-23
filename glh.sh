@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Wrapper script for git_helper.py
+# Wrapper script for GitLab Helper.py
 
 # Check if Python is installed
 if ! command -v python &> /dev/null
@@ -10,4 +10,4 @@ then
 fi
 
 # Run the Python script with any arguments passed to this shell script
-python git_helper.py "$@"
+python glh.py "$@"

@@ -2,9 +2,9 @@
 Copyright Notice:
 
 Author: Mathew Keeling
-Date: 21 October 2024
+Date: 22 October 2024
 
-Description: gitlab_helper
+Description: Gitlab Helper v1.1
 
 This script automates the cloning of all GitLab repositories from a specified GitLab 
 instance using the GitLab API. It retrieves all groups and projects, then clones each 
@@ -194,35 +194,88 @@ class gitlab_helper:
         for group in groups:
             self.clone_group_recursively(group)
 
-
-def create_config_file():
+def create_config_file(config_path):
     config = configparser.ConfigParser()
-    config["gitlab"] = {
-        "url": "https://your-gitlab-url",
+    config["DEFAULT"] = {
+        "selected_url": "gitlab.example.com"
+    }
+    config["gitlab.example.com"] = {
+        "url": "https://gitlab.example.com",
         "user": "your-username",
         "private_token": "your-private-token",
     }
-    with open("gitlab_helper.ini", "w") as configfile:
+    os.makedirs(os.path.dirname(config_path), exist_ok=True)
+    with open(config_path, "w") as configfile:
         config.write(configfile)
-    print("Configuration file 'gitlab_helper.ini' created with generic values.")
-    print("Please update it with your GitLab URL, username, and private token.")
-    print("Exiting...")
+    print(f"\nConfiguration file '{config_path}' created with generic values.")
+    print("Please update it with your GitLab URL, username, and private token for each hostname.")
+    print("Exiting...\n")
+
+def add_config_section(config_path, fqdn):
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    if fqdn not in config:
+        config[fqdn] = {
+            "url": f"https://{fqdn}",
+            "user": "your-username",
+            "private_token": "your-private-token",
+        }
+        with open(config_path, "w") as configfile:
+            config.write(configfile)
+        print(f"\nConfiguration section '{fqdn}' added to '{config_path}'.")
+        print("Please update it with your GitLab URL, username, and private token.\n")
+    else:
+        print(f"\nConfiguration section '{fqdn}' already exists in '{config_path}'.\n")
+
+def set_selected_url(config_path, fqdn):
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    if fqdn in config:
+        config["DEFAULT"]["selected_url"] = fqdn
+        with open(config_path, "w") as configfile:
+            config.write(configfile)
+        print(f"\nSelected URL set to '{fqdn}' in '{config_path}'.\n")
+    else:
+        print(f"\nError: Configuration section '{fqdn}' does not exist in '{config_path}'.\n")
+        exit(1)
+
+def list_urls(config_path):
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    print("\nAvailable URLs:")
+    for section in config.sections():
+        print(f"- {section}")
+    print()
+
+def list_urls(config_path):
+    config = configparser.ConfigParser()
+    config.read(config_path)
+    print("Available URLs:")
+    for section in config.sections():
+        print(f"- {section}")
 
 
 if __name__ == "__main__":
-    if not os.path.exists("gitlab_helper.ini"):
-        create_config_file()
+    if os.name == 'nt':  # Windows
+        config_path = os.path.expanduser("~\\.glh\\glh.ini")
+    else:  # Linux and other Unix-like systems
+        config_path = os.path.expanduser("~/.glh/glh.ini")
+
+    if not os.path.exists(config_path):
+        create_config_file(config_path)
         exit(1)
-
-    config = configparser.ConfigParser()
-    config.read("gitlab_helper.ini")
-
-    GITLAB_URL = config["gitlab"]["url"]
-    USER = config["gitlab"]["user"]
-    PRIVATE_TOKEN = config["gitlab"]["private_token"]
 
     parser = argparse.ArgumentParser(
         description="Clone and update GitLab repositories."
+    )
+    parser.add_argument(
+        "--add_url", type=str, help="Fully qualified domain name to add a new configuration section."
+    )
+    parser.add_argument(
+        "--set_url", type=str, help="Set the selected GitLab URL."
+    )
+    parser.add_argument(
+        "--list_url", action="store_true", help="List all available URLs."
     )
     parser.add_argument(
         "--projects", type=str, help="Comma-separated list of projects to clone."
@@ -237,6 +290,32 @@ if __name__ == "__main__":
         "-v", "--verbose", action="store_true", help="Enable verbose logging."
     )
     args = parser.parse_args()
+
+    if args.add_url:
+        add_config_section(config_path, args.add_url)
+        exit(0)
+
+    if args.set_url:
+        set_selected_url(config_path, args.set_url)
+        exit(0)
+
+    if args.list_url:
+        list_urls(config_path)
+        exit(0)
+
+    config = configparser.ConfigParser()
+    config.read(config_path)
+
+    # Determine the selected URL from the config file
+    selected_url = config["DEFAULT"]["selected_url"]
+
+    if selected_url not in config:
+        print(f"\nNo configuration found for selected URL '{selected_url}'.\n")
+        exit(1)
+
+    GITLAB_URL = config[selected_url]["url"]
+    USER = config[selected_url]["user"]
+    PRIVATE_TOKEN = config[selected_url]["private_token"]
 
     cloner = gitlab_helper(GITLAB_URL, USER, PRIVATE_TOKEN, verbose=args.verbose)
 
@@ -277,4 +356,4 @@ if __name__ == "__main__":
         elif choice == "all":
             cloner.clone_all()
         else:
-            print("Invalid choice. Please enter 'projects', 'groups', or 'all'.")
+            print("\nInvalid choice. Please enter 'projects', 'groups', or 'all'.\n")

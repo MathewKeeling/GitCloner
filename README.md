@@ -7,6 +7,7 @@
                                             |_|              
 ```
 
+
 This repository contains the `glh.py` file, a versatile Python script designed to streamline the process of managing GitLab repositories.
 
 ## Prerequisites
@@ -23,7 +24,7 @@ To use the `glh.py` script, follow these steps:
 1. Clone this repository to your local machine.
 2. Open a terminal or command prompt.
 3. Navigate to the cloned repository directory.
-4. Create a `gitlab_helper.ini` file with the following content:
+4. Create a `glh.ini` file with the following content:
     ```ini
     [gitlab]
     url = https://your-gitlab-url
@@ -59,6 +60,10 @@ To use the `glh.sh` script from anywhere on your system, you can add it to your 
     ```bash
     glh --projects project1,project2
     ```
+
+## Configuration File Location
+
+The script expects the configuration file to be located at `~/.glh/glh.ini` on Linux and other Unix-like systems, or `~\\.glh\\glh.ini` on Windows. If the configuration file does not exist, the script will create one with generic values and prompt you to update it.
 
 ## Performing Updates
 
