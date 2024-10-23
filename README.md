@@ -8,7 +8,7 @@
 ```
 
 
-This repository contains the `glh.py` file, a versatile Python script designed to streamline the process of managing GitLab repositories.
+This repository contains the GitLab-Helper utility, a versatile Python script designed to streamline the process of managing GitLab repositories.
 
 ## Prerequisites
 
