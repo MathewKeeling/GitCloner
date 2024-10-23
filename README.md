@@ -9,6 +9,7 @@
 ```
 
 
+
 This repository contains the `glh.py` file, a versatile Python script designed to streamline the process of managing GitLab repositories.
 
 ## Prerequisites
@@ -85,6 +86,16 @@ To update the `glh.py` script and the wrapper:
     chmod +x /usr/local/bin/glh
     chmod +x /usr/local/bin/glh.py
     ```
+
+## Supported Platforms
+
+This script supports both Windows and Linux systems.
+
+## Limitations
+
+This script does **not** work with GitHub, and there are no plans to support GitHub.
+
+*I'm not opposed to it, but because GitHub is not FOSS, I'm not very interested in building tooling for that. If you're viewing this project on GitHub: this repository is only a mirror. Forks and Pull Requests are welcomed! GNUv3 attribution(s) required where applicable.*
 
 ## License
 
