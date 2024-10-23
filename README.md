@@ -95,8 +95,8 @@ This script supports both Windows and Linux systems.
 
 This script does **not** work with GitHub, and there are no plans to support GitHub.
 
-*I'm not opposed to it, but because GitHub is not FOSS, I'm not very interested in building tooling for that. If you're viewing this project on GitHub: this repository is only a mirror. Forks and Pull Requests are welcomed! GNUv3 attribution(s) required where applicable.*
+*I'm not opposed to it, but because GitHub is not FOSS, I'm not very interested in building tooling for that. If you're viewing this project on GitHub: this repository is only a mirror. Forks and Pull Requests are welcomed! GPLv3 attribution(s) required where applicable.*
 
 ## License
 
-This project is licensed under the GNU V3 License.
+This project is licensed under the GPLv3 License.
