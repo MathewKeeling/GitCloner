@@ -3,7 +3,7 @@
 ######################
 
 # Secrets
-git_helper.ini
+gitlab_helper.ini
 
 ##################
 ## Boiler Plate ##
