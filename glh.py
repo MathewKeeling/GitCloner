@@ -4,7 +4,7 @@ Copyright Notice:
 Author: Mathew Keeling
 Date: 22 October 2024
 
-Description: Gitlab Helper v1.1
+Description: Gitlab Helper 2024.10.1
 
 This script automates the cloning of all GitLab repositories from a specified GitLab 
 instance using the GitLab API. It retrieves all groups and projects, then clones each 

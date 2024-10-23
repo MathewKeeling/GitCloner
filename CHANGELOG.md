@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1] - 2024-10-23
+## [2024.10.1] - 2024-10-23
 
 ### Added
 - Introduced `--add_url` argument to add a new configuration section for a fully qualified domain name (FQDN).
@@ -14,7 +14,7 @@
 - The script now dynamically selects the appropriate configuration based on the selected GitLab URL.
 - The script now instructs the user to update the INI file with relevant information when adding a new FQDN.
 
-## [1.0] - 2024-10-22
+## [2024.10.0] - 2024-10-22
 
 ### Added
 - Initial release of the script with the following features:
