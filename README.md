@@ -7,8 +7,7 @@
                                             |_|              
 ```
 
-
-This repository contains the GitLab-Helper utility, a versatile Python script designed to streamline the process of managing GitLab repositories.
+This repository contains the `glh.py` file, a versatile Python script designed to streamline the process of managing GitLab repositories.
 
 ## Prerequisites
 
@@ -46,13 +45,15 @@ To use the `glh.py` script, follow these steps:
 
 To use the `glh.sh` script from anywhere on your system, you can add it to your `bin` directory:
 
-1. Move the script to your `bin` directory:
+1. Move both the shell script and the Python script to your `bin` directory:
     ```bash
     mv glh.sh /usr/local/bin/glh
+    mv glh.py /usr/local/bin/glh.py
     ```
-2. Make sure the script is executable:
+2. Make sure the scripts are executable:
     ```bash
     chmod +x /usr/local/bin/glh
+    chmod +x /usr/local/bin/glh.py
     ```
 3. Now you can run the script from anywhere using:
     ```bash
@@ -71,10 +72,12 @@ To update the `glh.py` script and the wrapper:
     ```bash
     git pull origin main
     ```
-3. If there are updates to the wrapper script, move it to your `bin` directory again:
+3. If there are updates to the wrapper script, move both scripts to your `bin` directory again:
     ```bash
     mv glh.sh /usr/local/bin/glh
+    mv glh.py /usr/local/bin/glh.py
     chmod +x /usr/local/bin/glh
+    chmod +x /usr/local/bin/glh.py
     ```
 
 ## License
