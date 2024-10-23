@@ -7,6 +7,7 @@
                                             |_|              
 ```
 
+
 This repository contains the `glh.py` file, a versatile Python script designed to streamline the process of managing GitLab repositories.
 
 ## Prerequisites
@@ -32,13 +33,48 @@ To use the `glh.py` script, follow these steps:
     ```
 5. Run the script using the following command:
     ```bash
-    python glh.py
+    ./glh.sh
     ```
 6. Use the command-line arguments to specify projects or groups to clone, or clone all:
     ```bash
-    python glh.py --projects project1,project2
-    python glh.py --groups group1,group2
-    python glh.py --all
+    ./glh.sh --projects project1,project2
+    ./glh.sh --groups group1,group2
+    ./glh.sh --all
+    ```
+
+## Adding to Bin Directory
+
+To use the `glh.sh` script from anywhere on your system, you can add it to your `bin` directory:
+
+1. Move the script to your `bin` directory:
+    ```bash
+    mv glh.sh /usr/local/bin/glh
+    ```
+2. Make sure the script is executable:
+    ```bash
+    chmod +x /usr/local/bin/glh
+    ```
+3. Now you can run the script from anywhere using:
+    ```bash
+    glh --projects project1,project2
+    ```
+
+## Performing Updates
+
+To update the `glh.py` script and the wrapper:
+
+1. Navigate to the cloned repository directory:
+    ```bash
+    cd /path/to/cloned/repository
+    ```
+2. Pull the latest changes from the repository:
+    ```bash
+    git pull origin main
+    ```
+3. If there are updates to the wrapper script, move it to your `bin` directory again:
+    ```bash
+    mv glh.sh /usr/local/bin/glh
+    chmod +x /usr/local/bin/glh
     ```
 
 ## License
