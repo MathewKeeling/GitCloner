@@ -1,14 +1,32 @@
 ```
+
+```
+
+
+<div align="center">
+
+<table>
+  <tr>
+    <td>
+      <pre>
    ___ _ _     __       _                  _                 
   / _ (_) |_  / /  __ _| |__     /\  /\___| |_ __   ___ _ __ 
  / /_\/ | __|/ /  / _` | '_ \   / /_/ / _ \ | '_ \ / _ \ '__|
 / /_\\| | |_/ /__| (_| | |_) | / __  /  __/ | |_) |  __/ |   
 \____/|_|\__\____/\__,_|_.__/  \/ /_/ \___|_| .__/ \___|_|   
                                             |_|              
-                                                   v2024.10.1
-```
+                                                  v2024.10.29
+      </pre>
+    </td>
+    <td>
+      <img src="glh.png" alt="Gitlab Helper" style="width: 200px; height: auto;">
+    </td>
+  </tr>
+</table>
 
+</div>
 
+## Overview
 
 This repository contains the `glh.py` file, a versatile Python script designed to streamline the process of managing GitLab repositories.
 
